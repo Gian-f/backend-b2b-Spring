@@ -1,6 +1,6 @@
 package com.br.b2b.infra;
 
-import com.br.b2b.service.JwtService;
+import com.br.b2b.service.auth.JwtService;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;

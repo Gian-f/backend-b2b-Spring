@@ -1,10 +1,9 @@
-package com.br.b2b.service;
+package com.br.b2b.service.auth;
 
 import com.br.b2b.dto.request.AuthRequest;
 import com.br.b2b.dto.response.AuthResponse;
 import com.br.b2b.model.User;
 import com.br.b2b.repository.UserRepository;
-import jakarta.persistence.NoResultException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;

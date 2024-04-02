@@ -1,4 +1,4 @@
-package com.br.b2b.service;
+package com.br.b2b.service.auth;
 
 import com.br.b2b.model.User;
 import io.jsonwebtoken.Claims;

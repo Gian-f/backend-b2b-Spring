@@ -2,7 +2,7 @@ package com.br.b2b.resource;
 
 import com.br.b2b.dto.request.AuthRequest;
 import com.br.b2b.dto.response.AuthResponse;
-import com.br.b2b.service.AuthService;
+import com.br.b2b.service.auth.AuthService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
