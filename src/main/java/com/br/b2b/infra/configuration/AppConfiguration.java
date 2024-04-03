@@ -1,4 +1,4 @@
-package com.br.b2b.infra;
+package com.br.b2b.infra.configuration;
 
 import com.br.b2b.repository.UserRepository;
 import jakarta.persistence.NoResultException;

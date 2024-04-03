@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import java.security.Key;
 import java.security.SecureRandom;
+import java.time.Duration;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
@@ -66,7 +67,12 @@ public class JwtService {
     }
 
     public String generateToken(Map<String, Object> s, UserDetails userDetails) {
-        return Jwts.builder().claims(s).subject(userDetails.getUsername()).issuedAt(new Date(System.currentTimeMillis())).expiration(new Date(System.currentTimeMillis() + 1000 * 60 * 24)).signWith(getSignInKeys(), SignatureAlgorithm.HS256).compact();
+        return Jwts.builder().claims(s)
+                .subject(userDetails.getUsername())
+                .issuedAt(new Date(System.currentTimeMillis()))
+                .expiration(new Date(System.currentTimeMillis() + Duration.ofHours(24).toMillis()))
+                .signWith(getSignInKeys(), SignatureAlgorithm.HS256)
+                .compact();
     }
 
     public boolean isTokenValid(String token, UserDetails userDetails) {

@@ -1,5 +1,6 @@
-package com.br.b2b.infra;
+package com.br.b2b.infra.configuration;
 
+import com.br.b2b.infra.JwtAuthFilter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -31,6 +32,8 @@ public class SecurityConfig {
                 .authorizeHttpRequests(
                         auth -> auth.requestMatchers(HttpMethod.POST, "/api/v1/user/register").permitAll()
                                 .requestMatchers(HttpMethod.POST, "/api/v1/login").permitAll()
+                                .requestMatchers(HttpMethod.GET, "/api/v1/store/products").permitAll()
+                                .requestMatchers(HttpMethod.GET, "/api/v1/store/categories").permitAll()
                 )
                 .authenticationProvider(authenticationProvider)
                 .addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class);

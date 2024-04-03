@@ -1,9 +1,9 @@
 package com.br.b2b.service.store;
 
-import com.br.b2b.dto.response.StoreResponse;
-import reactor.core.publisher.Mono;
+import com.br.b2b.dto.response.CategoryResponse;
+import com.br.b2b.dto.response.ProductResponse;
 
 public interface StoreService {
-    Mono<StoreResponse> getAllProducts();
-    Mono<StoreResponse> getAllCategories();
+    ProductResponse getAllProducts();
+    CategoryResponse getAllCategories();
 }
