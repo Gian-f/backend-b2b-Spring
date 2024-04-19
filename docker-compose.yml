@@ -11,15 +11,21 @@ services:
       POSTGRES_DB: postgres
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: 1234
-    volumes:
-      - postgres_data:/var/lib/postgresql/data
     networks:
       - desenvolvimento-network
+
+  spring-app:
+    build: .
+    ports:
+      - "8080:8080"
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/postgres
+    networks:
+      - desenvolvimento-network
+    depends_on:
+      - postgres
 
 networks:
   desenvolvimento-network:
     name: desenvolvimento-network
     driver: bridge
-
-volumes:
-  postgres_data:
