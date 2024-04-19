@@ -30,7 +30,6 @@ dependencies {
     implementation("io.jsonwebtoken:jjwt-impl:0.12.4")
     implementation("io.jsonwebtoken:jjwt-jackson:0.12.3")
     runtimeOnly("org.postgresql:postgresql:42.7.1")
-    runtimeOnly("com.h2database:h2:2.2.224")
     implementation ("org.projectlombok:lombok:1.18.26")
     testImplementation("org.springframework.boot:spring-boot-starter-test:3.2.2")
     testImplementation("org.springframework.security:spring-security-test:6.1.5")
