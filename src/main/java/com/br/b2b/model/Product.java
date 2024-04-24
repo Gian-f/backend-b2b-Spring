@@ -35,6 +35,10 @@ public class Product {
     @Column(name = "updated_at", nullable = false)
     private String updatedAt;
 
+    public Product() {
+
+    }
+
     public Product(Long id, String title, Double price, String description, Category category, List<String> images, String createdAt, String updatedAt) {
         this.id = id;
         this.title = title;

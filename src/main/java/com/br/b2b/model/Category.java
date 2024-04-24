@@ -21,6 +21,9 @@ public class Category {
     @Column(name = "updated_at", nullable = false)
     private String updatedAt;
 
+    public Category() {
+    }
+
     public Category(Long id, String name, String image, String createdAt, String updatedAt) {
         this.id = id;
         this.name = name;
