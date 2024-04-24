@@ -23,6 +23,6 @@ public class StoreResource {
 
     @GetMapping("/categories")
     public ResponseEntity<CategoryResponse> getAllCategories() {
-        return  ResponseEntity.ok(storeService.getAllCategories());
+        return ResponseEntity.ok(storeService.getAllCategories());
     }
 }

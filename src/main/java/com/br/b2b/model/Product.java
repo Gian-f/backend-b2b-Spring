@@ -1,16 +1,50 @@
 package com.br.b2b.model;
 
+import jakarta.persistence.*;
+
 import java.util.List;
 
+@Entity
+@Table(name = "product")
 public class Product {
-    Long id;
-    String title;
-    Double price;
-    String description;
-    Category category;
-    List<String> images;
-    String creationAt;
-    String updatedAt;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @Column(nullable = false)
+    private String title;
+
+    @Column(nullable = false)
+    private Double price;
+
+    @Column(nullable = false)
+    private String description;
+
+    @ManyToOne
+    @JoinColumn(name = "category_id", nullable = false)
+    private Category category;
+
+    @ElementCollection
+    @CollectionTable(name = "product_image", joinColumns = @JoinColumn(name = "product_id"))
+    @Column(name = "image")
+    private List<String> images;
+
+    @Column(name = "created_at", nullable = false)
+    private String createdAt;
+
+    @Column(name = "updated_at", nullable = false)
+    private String updatedAt;
+
+    public Product(Long id, String title, Double price, String description, Category category, List<String> images, String createdAt, String updatedAt) {
+        this.id = id;
+        this.title = title;
+        this.price = price;
+        this.description = description;
+        this.category = category;
+        this.images = images;
+        this.createdAt = createdAt;
+        this.updatedAt = updatedAt;
+    }
 
     public Long getId() {
         return id;
@@ -60,12 +94,12 @@ public class Product {
         this.images = images;
     }
 
-    public String getCreationAt() {
-        return creationAt;
+    public String getCreatedAt() {
+        return createdAt;
     }
 
-    public void setCreationAt(String creationAt) {
-        this.creationAt = creationAt;
+    public void setCreatedAt(String creationAt) {
+        this.createdAt = creationAt;
     }
 
     public String getUpdatedAt() {

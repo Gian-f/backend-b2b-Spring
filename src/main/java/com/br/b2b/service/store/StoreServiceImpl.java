@@ -1,10 +1,11 @@
 package com.br.b2b.service.store;
 
-import com.br.b2b.client.StoreClient;
 import com.br.b2b.dto.response.CategoryResponse;
 import com.br.b2b.dto.response.ProductResponse;
 import com.br.b2b.model.Category;
 import com.br.b2b.model.Product;
+import com.br.b2b.repository.CategoryRepository;
+import com.br.b2b.repository.ProductRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
@@ -16,10 +17,12 @@ import java.util.List;
 @RequiredArgsConstructor
 public class StoreServiceImpl implements StoreService {
 
-    private final StoreClient storeClient;
+    private final ProductRepository productRepository;
+    private final CategoryRepository categoryRepository;
 
-    public StoreServiceImpl(StoreClient storeClient) {
-        this.storeClient = storeClient;
+    public StoreServiceImpl(ProductRepository productRepository, CategoryRepository categoryRepository) {
+        this.productRepository = productRepository;
+        this.categoryRepository = categoryRepository;
     }
 
 
@@ -28,7 +31,7 @@ public class StoreServiceImpl implements StoreService {
     public ProductResponse getAllProducts() {
         ProductResponse response = new ProductResponse();
         try {
-            List<Product> products = storeClient.getAllProducts();
+            List<Product> products = productRepository.findAll();
             response.setMessage("Operação realizada com sucesso!");
             response.setResult(products);
             response.setStatus(true);
@@ -45,7 +48,7 @@ public class StoreServiceImpl implements StoreService {
     public CategoryResponse getAllCategories() {
         CategoryResponse response = new CategoryResponse();
         try {
-            List<Category> categories = storeClient.getAllCategories();
+            List<Category> categories = categoryRepository.findAll();
             response.setMessage("Operação realizada com sucesso!");
             response.setResult(categories);
             response.setStatus(true);
