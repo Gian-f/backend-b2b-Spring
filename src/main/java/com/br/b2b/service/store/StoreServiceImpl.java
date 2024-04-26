@@ -1,6 +1,7 @@
 package com.br.b2b.service.store;
 
 import com.br.b2b.dto.response.CategoryResponse;
+import com.br.b2b.dto.response.FindProductResponse;
 import com.br.b2b.dto.response.ProductResponse;
 import com.br.b2b.model.Category;
 import com.br.b2b.model.Product;
@@ -12,6 +13,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.Collections;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -55,6 +57,23 @@ public class StoreServiceImpl implements StoreService {
         } catch (Exception e) {
             response.setMessage("Ocorreu um erro ao tentar buscar categorias: " + e.getMessage());
             response.setResult(Collections.emptyList());
+            response.setStatus(false);
+        }
+        return response;
+    }
+
+    @Override
+    @Cacheable("productCache")
+    public FindProductResponse findProductById(Long id) {
+        FindProductResponse response = new FindProductResponse();
+        try {
+            Optional<Product> product = productRepository.findById(id);
+            response.setMessage("Operação realizada com sucesso!");
+            response.setResult(product);
+            response.setStatus(true);
+        } catch (Exception e) {
+            response.setMessage("Ocorreu um erro ao tentar buscar produto por id: " + e.getMessage());
+            response.setResult(Optional.empty());
             response.setStatus(false);
         }
         return response;

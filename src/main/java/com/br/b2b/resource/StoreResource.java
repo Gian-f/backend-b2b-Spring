@@ -1,11 +1,13 @@
 package com.br.b2b.resource;
 
 import com.br.b2b.dto.response.CategoryResponse;
+import com.br.b2b.dto.response.FindProductResponse;
 import com.br.b2b.dto.response.ProductResponse;
 import com.br.b2b.service.store.StoreServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -24,5 +26,10 @@ public class StoreResource {
     @GetMapping("/categories")
     public ResponseEntity<CategoryResponse> getAllCategories() {
         return ResponseEntity.ok(storeService.getAllCategories());
+    }
+
+    @GetMapping("product/{id}")
+    public ResponseEntity<FindProductResponse> findProductById(@PathVariable Long id) {
+        return ResponseEntity.ok(storeService.findProductById(id));
     }
 }
