@@ -29,16 +29,11 @@ public class SecurityConfig {
     @Bean
     SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http.csrf(AbstractHttpConfigurer::disable)
-                .authorizeHttpRequests(
-                        auth -> auth.requestMatchers(HttpMethod.POST, "/api/v1/user/register").permitAll()
-                                .requestMatchers(HttpMethod.POST, "/api/v1/login").permitAll()
-                                .requestMatchers(HttpMethod.GET, "/api/v1/store/products").permitAll()
-                                .requestMatchers(HttpMethod.GET, "/api/v1/store/categories").permitAll()
-                                .requestMatchers(HttpMethod.GET, "/me").permitAll()
+                .authorizeHttpRequests(authorizeRequests ->
+                        authorizeRequests.anyRequest().permitAll()
                 )
                 .authenticationProvider(authenticationProvider)
                 .addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class);
         return http.build();
-
     }
 }
