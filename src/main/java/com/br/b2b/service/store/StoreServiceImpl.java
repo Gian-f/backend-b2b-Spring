@@ -63,7 +63,7 @@ public class StoreServiceImpl implements StoreService {
     }
 
     @Override
-    @Cacheable("productCache")
+    @Cacheable(value="productCache", condition="#id != null")
     public FindProductResponse findProductById(Long id) {
         FindProductResponse response = new FindProductResponse();
         try {

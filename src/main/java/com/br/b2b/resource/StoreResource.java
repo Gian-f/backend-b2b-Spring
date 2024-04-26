@@ -28,7 +28,7 @@ public class StoreResource {
         return ResponseEntity.ok(storeService.getAllCategories());
     }
 
-    @GetMapping("product/{id}")
+    @GetMapping("products/{id}")
     public ResponseEntity<FindProductResponse> findProductById(@PathVariable Long id) {
         return ResponseEntity.ok(storeService.findProductById(id));
     }
