@@ -8,21 +8,11 @@ services:
     ports:
       - "5432:5432"
     environment:
-      POSTGRES_DB: postgres-qa
-      POSTGRES_USER: postgres-qa
-      POSTGRES_PASSWORD: 1234
+      - POSTGRES_DB=postgres-qa
+      - POSTGRES_USER=postgres-qa
+      - POSTGRES_PASSWORD=1234
     networks:
       - desenvolvimento-network-qa
-  spring-app-qa:
-    build: .
-    ports:
-      - "8080:8080"
-    environment:
-      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres-qa:5432/postgres-qa
-    networks:
-      - desenvolvimento-network-qa
-    depends_on:
-      - postgres-qa
 
 networks:
   desenvolvimento-network-qa:

@@ -61,7 +61,6 @@ public class DataLoader implements CommandLineRunner {
             Category saudeEbelezaCategory = findCategoryByName(categories, "Saúde e Beleza");
 
             if (modaCategory != null && eletronicosCategory != null && alimentacaoCategory != null && casaEJardimCategory != null && saudeEbelezaCategory != null) {
-
                 //Moda
                 products.add(new Product(1L, "Jaqueta de Couro Estilo Motociclista", 299.99, "Jaqueta de couro com estilo motociclista.", modaCategory, Collections.singletonList("https://i.ibb.co/0hXWpfn/Chaqueta-de-Cuero-Estilo-Motociclista.png"), LocalDateTime.now().toString(), LocalDateTime.now().toString()));
                 products.add(new Product(2L, "Tênis Adidas Ultraboost", 199.99, "Tênis esportivo da marca Adidas, modelo Ultraboost.", modaCategory, Collections.singletonList("https://i.ibb.co/7jKp0rs/Zapatillas-Adidas-Ultraboost.png"), LocalDateTime.now().toString(), LocalDateTime.now().toString()));
