@@ -13,8 +13,22 @@ services:
       - POSTGRES_PASSWORD=1234
     networks:
       - desenvolvimento-network-qa
+  spring-app:
+    build: .
+    ports:
+      - "8080:8080"
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres-qa:5432/postgres-qa
+      - SPRING_PROFILES_ACTIVE=qa
+    networks:
+      - desenvolvimento-network-qa
+    depends_on:
+      - postgres-qa
 
 networks:
   desenvolvimento-network-qa:
     name: desenvolvimento-network-qa
     driver: bridge
+
+
+    #docker-compose -f docker-compose.qa.yml up --build
