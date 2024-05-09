@@ -1,0 +1,31 @@
+-- Atualiza o campo images_json na tabela product para associar cada imagem ao seu produto
+UPDATE product
+SET image =
+    CASE
+        WHEN id = 1 THEN '["https://i.ibb.co/0hXWpfn/Chaqueta-de-Cuero-Estilo-Motociclista.png"]'
+        WHEN id = 2 THEN '["https://i.ibb.co/7jKp0rs/Zapatillas-Adidas-Ultraboost.png"]'
+        WHEN id = 3 THEN '["https://i.ibb.co/yn9tWB2/Jeans-Levi-s-501-Original.png"]'
+        WHEN id = 4 THEN '["https://i.ibb.co/WVY7wyD/Vestido-Elegante-de-Noche.png"]'
+        WHEN id = 5 THEN '["https://i.ibb.co/Hpv1gLk/Camiseta-Nike-Dri-FIT.png"]'
+        WHEN id = 6 THEN '["https://i.ibb.co/YTb1Ybv/Auriculares-Inal-mbricos-Bose-Quiet-Comfort-35.png"]'
+        WHEN id = 7 THEN '["https://i.ibb.co/BcqzzgF/Consola-Play-Station-5.png"]'
+        WHEN id = 8 THEN '["https://i.ibb.co/ZHT2r1s/C-mara-Sony-Alpha-A7-III.png"]'
+        WHEN id = 9 THEN '["https://i.ibb.co/mXkVjdS/Smartphone-Samsung-Galaxy-S21.png"]'
+        WHEN id = 10 THEN '["https://i.ibb.co/cDj3dpX/Apple-Mac-Book-Pro.png"]'
+        WHEN id = 11 THEN '["https://m.media-amazon.com/images/I/51za6kC9k1L._AC_SX679_.jpg"]'
+        WHEN id = 12 THEN '["https://m.media-amazon.com/images/I/51uM+yRQcJL._AC_SX342_SY445_.jpg"]'
+        WHEN id = 13 THEN '["https://m.media-amazon.com/images/I/71xY1eaDeKL._SX466_.jpg"]'
+        WHEN id = 14 THEN '["https://m.media-amazon.com/images/I/51U+ULwABqL._AC_SY300_SX300_.jpg"]'
+        WHEN id = 15 THEN '["https://m.media-amazon.com/images/I/41AKkxml0kL._AC_SX679_.jpg"]'
+        WHEN id = 16 THEN '["https://m.media-amazon.com/images/I/71iDL2frZYL._AC_SX679_.jpg"]'
+        WHEN id = 17 THEN '["https://img.freepik.com/fotos-premium/leite-de-aveia-na-garrafa-de-vidro-na-madeira-rustica_271740-2553.jpg?w=740"]'
+        WHEN id = 18 THEN '["https://img.freepik.com/fotos-premium/fatias-de-pao-na-placa-de-madeira_23-2148359137.jpg?w=1380"]'
+        WHEN id = 19 THEN '["https://img.freepik.com/fotos-gratis/sortido-de-comida-infantil-saboroso-alto-angulo_23-2149627800.jpg?t=st=1715186244~exp=1715189844~hmac=a4cff449d412a033beee8ce52e492fbfdf99f9dc452d50ba1a768127c750cf51&w=740"]'
+        WHEN id = 20 THEN '["https://img.freepik.com/fotos-gratis/maca-vermelha-com-a-folha-verde-no-fundo-branco_1232-3290.jpg?t=st=1715186301~exp=1715189901~hmac=6104a113f8b88f15749bbffe04ce771247b85c60d243511477da6f5816d84b67&w=1380"]'
+        WHEN id = 21 THEN '["https://img.freepik.com/fotos-premium/delicioso-iogurte-com-mirtilos-e-morangos-close-up_122799-127.jpg?w=740"]'
+        WHEN id = 22 THEN '["https://img.freepik.com/fotos-gratis/arranjo-de-cama-aconchegante-de-alto-angulo_23-2150326152.jpg?t=st=1715186398~exp=1715189998~hmac=bf28ac0d9ca9fb025b5193062d2d90d497df0e0bc0f53c631d714bbcfaebef55&w=740"]'
+        WHEN id = 23 THEN '["https://img.freepik.com/fotos-gratis/travesseiro-no-interior-da-decoracao-do-sofa-da-sala-de-estar_74190-12625.jpg?t=st=1715186465~exp=1715190065~hmac=dd58bf4800dc211ee7e10aca9c8a956e1b5142bbc804af9c81b8f02806639dbb&w=1380"]'
+        WHEN id = 24 THEN '["https://img.freepik.com/fotos-gratis/homem-grelhando-carne-linguicas-ao-ar-livre_53876-63336.jpg?t=st=1715186714~exp=1715190314~hmac=c1a36dc6fa4b80d1f27923ab1853e19d27cacf5eb2596820cfd90f31bcb0e37f&w=1060"]'
+        WHEN id = 25 THEN '["https://img.freepik.com/fotos-premium/vista-de-alto-angulo-de-varias-flores-na-mesa_1048944-9273677.jpg?w=1380"]'
+        WHEN id = 26 THEN '["https://img.freepik.com/fotos-premium/lampada-elegante-na-mesa-contra-um-fundo-claro_917213-38000.jpg?w=826"]'
+    END;

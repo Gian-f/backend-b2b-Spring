@@ -32,4 +32,4 @@ WORKDIR /app/build/libs/
 EXPOSE 8080
 
 # Comando para executar a aplicação quando o contêiner for iniciado
-CMD ["java", "-jar", "-Dspring.profiles.active=prod", "backend-b2b-0.0.1-SNAPSHOT.jar"]
+CMD ["java", "-jar", "backend-b2b-0.0.1-SNAPSHOT.jar"]

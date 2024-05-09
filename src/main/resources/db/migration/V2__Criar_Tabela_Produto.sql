@@ -1,10 +1,11 @@
-CREATE TABLE IF NOT EXISTS product (
-    id UUID PRIMARY KEY,
+CREATE TABLE product (
+    id SERIAL PRIMARY KEY,
     title VARCHAR(255) NOT NULL,
-    price NUMERIC(10, 2) NOT NULL,
+    price DOUBLE PRECISION NOT NULL,
     description TEXT NOT NULL,
-    category_id UUID NOT NULL,
+    category_id BIGINT NOT NULL,
     created_at TIMESTAMP NOT NULL,
     updated_at TIMESTAMP NOT NULL,
+    image VARCHAR(255) NOT NULL,
     FOREIGN KEY (category_id) REFERENCES category(id)
 );
