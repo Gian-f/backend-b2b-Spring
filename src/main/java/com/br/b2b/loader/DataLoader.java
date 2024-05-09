@@ -26,11 +26,16 @@ public class DataLoader implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        List<Category> categories = createCategories();
-        categoryRepository.saveAll(categories);
+        try {
+            List<Category> categories = createCategories();
+            categoryRepository.saveAll(categories);
 
-        List<Product> products = createProducts(categories);
-        productRepository.saveAll(products);
+            List<Product> products = createProducts(categories);
+            productRepository.saveAll(products);
+        } catch (Exception e) {
+            System.out.println("Ocorreu um erro ao salvar produtos!");
+            System.out.println(e);
+        }
     }
 
     private List<Category> createCategories() {
@@ -61,6 +66,12 @@ public class DataLoader implements CommandLineRunner {
         Category saudeEbelezaCategory = findCategoryByName(categories, "Saúde e Beleza");
 
         if (modaCategory != null && eletronicosCategory != null && alimentacaoCategory != null && casaEJardimCategory != null && saudeEbelezaCategory != null) {
+            System.out.println("entrou aqui!!1");
+            System.out.println(modaCategory + "moda");
+            System.out.println(modaCategory + "eletronico");
+            System.out.println(modaCategory + "alimentacao");
+            System.out.println(modaCategory + "casaejardim");
+            System.out.println(modaCategory + "saudeebeleza");
             //Moda
             products.add(new Product(1L, "Jaqueta de Couro Estilo Motociclista", 299.99, "Jaqueta de couro com estilo motociclista.", modaCategory, Collections.singletonList("https://i.ibb.co/0hXWpfn/Chaqueta-de-Cuero-Estilo-Motociclista.png"), LocalDateTime.now().toString(), LocalDateTime.now().toString()));
             products.add(new Product(2L, "Tênis Adidas Ultraboost", 199.99, "Tênis esportivo da marca Adidas, modelo Ultraboost.", modaCategory, Collections.singletonList("https://i.ibb.co/7jKp0rs/Zapatillas-Adidas-Ultraboost.png"), LocalDateTime.now().toString(), LocalDateTime.now().toString()));
@@ -96,6 +107,7 @@ public class DataLoader implements CommandLineRunner {
             products.add(new Product(24L, "Churrasqueira Elétrica", 249.99, "Churrasqueira elétrica portátil com grelha antiaderente.", casaEJardimCategory, Collections.singletonList("https://img.freepik.com/fotos-gratis/homem-grelhando-carne-linguicas-ao-ar-livre_53876-63336.jpg?t=st=1715186714~exp=1715190314~hmac=c1a36dc6fa4b80d1f27923ab1853e19d27cacf5eb2596820cfd90f31bcb0e37f&w=1060"), LocalDateTime.now().toString(), LocalDateTime.now().toString()));
             products.add(new Product(25L, "Kit de Ferramentas para Jardim", 99.99, "Kit de ferramentas para jardinagem com 10 peças.", casaEJardimCategory, Collections.singletonList("https://img.freepik.com/fotos-premium/vista-de-alto-angulo-de-varias-flores-na-mesa_1048944-9273677.jpg?w=1380"), LocalDateTime.now().toString(), LocalDateTime.now().toString()));
             products.add(new Product(26L, "Luminária de Mesa Decorativa", 59.99, "Luminária de mesa decorativa com abajur de tecido.", casaEJardimCategory, Collections.singletonList("https://img.freepik.com/fotos-premium/lampada-elegante-na-mesa-contra-um-fundo-claro_917213-38000.jpg?w=826"), LocalDateTime.now().toString(), LocalDateTime.now().toString()));
+            System.out.println("terminou");
         }
         return products;
 //        }
