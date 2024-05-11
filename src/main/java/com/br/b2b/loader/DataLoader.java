@@ -6,14 +6,12 @@ import com.br.b2b.repository.CategoryRepository;
 import com.br.b2b.repository.ProductRepository;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
-import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-
 @Component
 public class DataLoader implements ApplicationRunner {
 
@@ -37,7 +35,6 @@ public class DataLoader implements ApplicationRunner {
 
         List<Product> products = createProducts(categories);
         productRepository.saveAll(products);
-
     }
 
     private List<Category> createCategories() {
