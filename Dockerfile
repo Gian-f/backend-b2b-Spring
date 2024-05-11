@@ -25,17 +25,10 @@ RUN chmod +x ./gradlew
 # Compila e constrói o projeto Spring Boot, pulando os testes
 RUN ./gradlew build -x test
 
-# Copia o script start.sh para o contêiner
-COPY ./start.sh /app/
-
-# Define permissões de execução para o script start.sh
-RUN chmod +x /app/start.sh
-
 # Define o diretório de trabalho onde o arquivo JAR está presente
 WORKDIR /app/build/libs/
 
 # Expõe a porta 8080 para fora do contêiner
 EXPOSE 8080
 
-# Comando para executar o script start.sh quando o contêiner for iniciado
-CMD ["/bin/sh", "-c", "/app/start.sh"]
+CMD ["java", "-jar", "-Dspring.profiles.active=prod", "backend-b2b-0.0.1-SNAPSHOT.jar"]
