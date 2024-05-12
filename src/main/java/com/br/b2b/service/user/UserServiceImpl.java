@@ -47,6 +47,10 @@ public class UserServiceImpl implements UserService {
             return new UserResponse("E-mail inválido!", null, false);
         }
 
+        if (userRepository.existsByEmail(newUser.getEmail())) {
+            return new UserResponse("E-mail já existe!", null, false);
+        }
+
         if (newUser.getCpf() == null || newUser.getCpf().isEmpty()) {
             return new UserResponse("CPF é um campo obrigatório!", null, false);
         }

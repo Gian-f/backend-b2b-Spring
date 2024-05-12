@@ -13,8 +13,6 @@ public class UserDTO {
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
     private boolean enabled;
-
-
     public String getId() {
         return id;
     }
