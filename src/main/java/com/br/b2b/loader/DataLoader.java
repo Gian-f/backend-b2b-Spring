@@ -55,7 +55,6 @@ public class DataLoader implements ApplicationRunner {
 
     private List<Product> createProducts(List<Category> categories) {
         List<Product> products = new ArrayList<>();
-
         List<Product> existingProducts = productRepository.findAll();
 
         if (existingProducts.isEmpty()) {
