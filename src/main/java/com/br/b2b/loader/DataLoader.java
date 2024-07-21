@@ -12,6 +12,7 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+
 @Component
 public class DataLoader implements ApplicationRunner {
 
@@ -41,6 +42,10 @@ public class DataLoader implements ApplicationRunner {
         List<Category> categories = new ArrayList<>();
         List<Category> existingCategories = categoryRepository.findAll();
 
+        if (!existingCategories.isEmpty()) {
+            categoryRepository.deleteAll();
+        }
+
         if (existingCategories.isEmpty()) {
             categories.add(new Category(1L, "Eletrônicos", "https://img.freepik.com/fotos-gratis/colecao-de-tecnologia-do-homem-moderno-em-fones-de-ouvido-de-mesa-de-madeira-oculos-de-sol-smartphone-gerado-por-ia_24640-92923.jpg?t=st=1721564809~exp=1721568409~hmac=fece46b6358527212fe361aa6dd335368c3ceeba5206d595f7fe2224dac73d87&w=1380", LocalDateTime.now().toString(), LocalDateTime.now().toString()));
             categories.add(new Category(2L, "Moda", "https://i.ibb.co/Chjv3k8/Moda.png", LocalDateTime.now().toString(), LocalDateTime.now().toString()));
@@ -56,6 +61,10 @@ public class DataLoader implements ApplicationRunner {
         List<Product> products = new ArrayList<>();
 
         List<Product> existingProducts = productRepository.findAll();
+
+        if (!existingProducts.isEmpty()) {
+            productRepository.deleteAll();
+        }
 
         if (existingProducts.isEmpty()) {
             Category eletronicosCategory = findCategoryByName(categories, "Eletrônicos");
@@ -103,7 +112,6 @@ public class DataLoader implements ApplicationRunner {
             }
         }
         return products;
-
     }
 
     private void addIfNotExist(List<Product> products, List<Product> existingProducts, Product product) {
@@ -112,6 +120,7 @@ public class DataLoader implements ApplicationRunner {
             products.add(product);
         }
     }
+
     private Category findCategoryByName(List<Category> categories, String categoryName) {
         return categories.stream()
                 .filter(category -> category.getName().equals(categoryName))
